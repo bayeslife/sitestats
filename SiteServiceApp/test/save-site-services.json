@@ -1,0 +1,7 @@
+{	"site":"test1",
+	"loadTime": 10000,
+	"references":["service1.com","alias.service2.com"]}
+
+
+
+

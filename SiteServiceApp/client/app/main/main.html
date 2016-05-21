@@ -1,0 +1,126 @@
+<navbar></navbar>
+
+  <div class="container">  
+      <p class="lead">
+        SiteService presents a view of web service dependencies of selected websites.  
+        </p>
+        <p class="lead">
+        You are able to see what services are most popular across the market, which sites are using those services and what sites use specific services
+        </ul>
+      </p>
+
+      <div class="well well-sm">      
+        <p>For example you are able to see that Google Analytics is used by a large percentage of web sites.</p>
+        <p>You can also see that Trademe.co.nz and Xero.co.nz are two sites that use Google Analytics.</p>
+      </div>
+
+      <p class="lead">In addition to the static information presented here, you may subscribe to receive email notifications of sites that begin to use new services.</p>
+
+      <div class="well well-sm">      
+        <p>You will then have visibility of new services being used in the market.</p>        
+      </div>
+
+  </div>
+
+<div class="jumbotron">
+  <div class="container">
+  <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2>Some stats about the information presented here</h2>
+          
+        </div>
+        <div class="panel-body">
+              <ul class="nav nav-pills">
+        <li class="active"><a href="/sites">Sites currently monitored <span class="badge">{{summary.site_count}}</span></a></li>
+        <li class="active"><a href="/services">Services currently identified <span class="badge">{{summary.service_count}}</span></a></li>
+        <li class="active"><a href="#">Number of service changes in last week <span class="badge">{{summary.change_count}}</span></a></li>
+        </div>
+    </div>
+    
+      </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2>Most Popular Service Statistic</h2>
+          <p>Below is a graphic showing the distribution of web services by popularity across all the selected websites.</p>
+        </div>
+        <div class="panel-body">
+
+          <button style="margin: 5px" class="btn btn-info" type="button" ng-click="main.toggle()">Toggle Display</button>
+
+          <svg id="distributionview" width="1000" height="300" style="background: #FFF" ng-show="!main.defaultDisplay"></svg> 
+
+          <svg id="bubbleview" width="1000" height="300" style="background: #FFF" ng-show="main.defaultDisplay"></svg>
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="jumbotron">
+  <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2>Search Sites</h2>
+          <p>The following input auto-completes sites which you can select to view their corresponding service dependencies.</p>
+        </div>
+        <div class="panel-body">
+           <input type="text" ng-model="asyncSelected" placeholder="Enter your site" uib-typeahead="site for site in main.searchSite($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control" typeahead-on-select="main.selectSite($item)">
+            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+            <div ng-show="noResults">
+              <i class="glyphicon glyphicon-remove"></i> No Results Found
+            </div>
+            
+            <svg id="distributionview-site-services" width="1000" height="300" style="background: #FFF" ng-show="siteServices"></svg> 
+        </div>
+    </div>
+
+
+  
+    
+  </div>
+</div>
+
+
+<div class="jumbotron">
+  <div class="container">
+      <h2>Search Services</h2>
+      <p>The following input auto-completes services which you can select to view the sites using those services.</p>
+    
+     <input type="text" ng-model="asyncSelected2" placeholder="Enter your service" uib-typeahead="service for service in main.searchService($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control" typeahead-on-select="main.selectService($item)">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+    
+    <button style="margin: 5px" class="btn btn-info" type="button" ng-repeat="s in serviceSites">
+      {{s.site}} <span class="badge">50</span> 
+    </button>
+
+<!--       <svg id="distributionview-service-sites" width="800" height="300" style="background: #FFF" ng-show="siteServices"></svg> 
+ -->    
+  </div>
+</div>
+
+
+<div class="jumbotron">
+  <div class="container">
+   <h2>How is this information collected</h2>
+    <p>On a daily basis all the sites in the system are visited and the XHR services they load are recorded.</p>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+   <h2>Want to subscribe for notifications</h2>
+    <p>You may be interested to get notifications when site have additional services added or removed.</p>
+
+  </div>
+</div>
+
+<footer></footer>

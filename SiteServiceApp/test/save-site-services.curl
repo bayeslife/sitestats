@@ -1,0 +1,3 @@
+curl -X POST -H "Content-Type: application/json" -d @save-site-services.json http://localhost:9000/api/siteservices?logOnly=true
+#curl -X POST  -d @save-site-services.json http://localhost:9000/api/siteservices
+

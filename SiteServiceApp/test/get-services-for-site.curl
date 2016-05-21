@@ -1,0 +1,7 @@
+
+curl http://localhost:9000/api/stats/services?site=http%3A%2F%2Fwww.bigpipe.co.nz
+
+#curl http://localhost:9000/api/services?site=http%3A%2F%2Fwww.bigpipe.co.nz
+
+#curl http://localhost:9000/api/services
+
